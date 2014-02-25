@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bus_driver.name %>
+</p>
+
+<p>
+  <strong>Birth date:</strong>
+  <%= @bus_driver.birth_date %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @bus_driver.salary %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @bus_driver.gender %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @bus_driver.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @bus_driver.email %>
+</p>
+
+<%= link_to 'Edit', edit_bus_driver_path(@bus_driver) %> |
+<%= link_to 'Back', bus_drivers_path %>

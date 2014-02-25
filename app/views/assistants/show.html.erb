@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @assistant.name %>
+</p>
+
+<p>
+  <strong>Birth date:</strong>
+  <%= @assistant.birth_date %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @assistant.salary %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @assistant.gender %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @assistant.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @assistant.email %>
+</p>
+
+<%= link_to 'Edit', edit_assistant_path(@assistant) %> |
+<%= link_to 'Back', assistants_path %>

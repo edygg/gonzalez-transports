@@ -1,0 +1,37 @@
+<h1>Listing bus_drivers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birth date</th>
+      <th>Salary</th>
+      <th>Gender</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bus_drivers.each do |bus_driver| %>
+      <tr>
+        <td><%= bus_driver.name %></td>
+        <td><%= bus_driver.birth_date %></td>
+        <td><%= bus_driver.salary %></td>
+        <td><%= bus_driver.gender %></td>
+        <td><%= bus_driver.phone %></td>
+        <td><%= bus_driver.email %></td>
+        <td><%= link_to 'Show', bus_driver %></td>
+        <td><%= link_to 'Edit', edit_bus_driver_path(bus_driver) %></td>
+        <td><%= link_to 'Destroy', bus_driver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bus driver', new_bus_driver_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Trademark:</strong>
+  <%= @bus.trademark %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @bus.model %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @bus.capacity %>
+</p>
+
+<%= link_to 'Edit', edit_bus_path(@bus) %> |
+<%= link_to 'Back', buses_path %>

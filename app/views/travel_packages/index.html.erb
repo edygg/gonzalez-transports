@@ -1,0 +1,27 @@
+<h1>Listing travel_packages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @travel_packages.each do |travel_package| %>
+      <tr>
+        <td><%= travel_package.price %></td>
+        <td><%= link_to 'Show', travel_package %></td>
+        <td><%= link_to 'Edit', edit_travel_package_path(travel_package) %></td>
+        <td><%= link_to 'Destroy', travel_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Travel package', new_travel_package_path %>
