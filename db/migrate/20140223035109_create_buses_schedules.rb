@@ -4,5 +4,7 @@ class CreateBusesSchedules < ActiveRecord::Migration
       t.belongs_to :bus
       t.belongs_to :schedule
     end
+    
+    add_index :buses_schedules, [:bus, :schedule], unique: true
   end
 end
