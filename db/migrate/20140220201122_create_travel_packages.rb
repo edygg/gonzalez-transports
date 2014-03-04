@@ -9,6 +9,6 @@ class CreateTravelPackages < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :travel_packages, [:package_type, :schedule], unique: true
+    add_index :travel_packages, [:package_type_id, :schedule_id], unique: true, name: "package_schedule"
   end
 end

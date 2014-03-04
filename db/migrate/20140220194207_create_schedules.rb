@@ -10,6 +10,6 @@ class CreateSchedules < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :schedules, [:departure_city, :arrival_city, :departure_time], unique: true
+    add_index :schedules, [:departure_city_id, :arrival_city_id, :departure_time], unique: true, name: "schedules_unique"
   end
 end
