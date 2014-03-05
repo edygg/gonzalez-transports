@@ -38,8 +38,8 @@ gem 'puma'
 # Font-awesome icons
 gem 'font-awesome-sass'
 
-# Bootstrap
-gem "twitter-bootstrap-rails"
+# Devise for login
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
