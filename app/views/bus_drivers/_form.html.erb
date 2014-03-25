@@ -1,4 +1,4 @@
-<%= form_for(@bus_driver) do |f| %>
+<%= form_for([@bus, @bus_driver]) do |f| %>
   <% if @bus_driver.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@bus_driver.errors.count, "error") %> prohibited this bus_driver from being saved:</h2>

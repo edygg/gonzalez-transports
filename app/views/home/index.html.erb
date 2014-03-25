@@ -1,24 +1,3 @@
-<!-- Side Menu -->
-    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand"><a href="http://startbootstrap.com">Start Bootstrap</a>
-            </li>
-            <li><a href="#top">Home</a>
-            </li>
-            <li><a href="#about">About</a>
-            </li>
-            <li><a href="#services">Services</a>
-            </li>
-            <li><a href="#portfolio">Portfolio</a>
-            </li>
-            <li><a href="#contact">Contact</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /Side Menu -->
-
     <!-- Full Page Image Header Area -->
     <div id="top" class="header">
         <div class="vert-text">
@@ -35,7 +14,14 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
                     <h2>Our committed is to provide comfort and relax in your trips!</h2>
-                    <p class="lead">We offer daily trips between Honduras and Guatemala, in beautiful cities around these countries. AQUI PONER LOS BOTONES DE LOGIN</p>
+                    <p class="lead">We offer daily trips between Honduras and Guatemala, in beautiful cities around these countries.</p>
+                    <% if user_signed_in? %>
+                      <h3>Hi! <%= current_user.email %></h3>
+                      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-lg btn-danger" %>
+                    <% else %>
+                      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-default" %>
+                      <%= link_to "Login", new_user_session_path, class: "btn btn-lg btn-primary" %>
+                    <% end %>
                 </div>
             </div>
         </div>
@@ -56,7 +42,7 @@
                     <div class="service-item">
                         <i class="service-icon fa fa-star"></i>
                         <h4>Plus Traveler</h4>
-                        <p>For travalers who always likes the best trips</p>
+                        <p>For travelers who prefer always the best of the best, we recommend you the plus service. You will travel in an exclusive area in the bus in reclining broad seats, where you can take a nap in complete comfort. </p>
                     </div>
                 </div>
                 <div class="col-md-2 text-center">
@@ -88,7 +74,8 @@
     <!-- Callout -->
     <div class="callout">
         <div class="vert-text">
-            <h1>A Dramatic Text Area</h1>
+            <h1>Travel is more easier now, you can buy tickets online!</h1>
+          <%= link_to "Buy Tickets Online", new_ticket_path, class: "btn btn-lg btn-success" %>
         </div>
     </div>
     <!-- /Callout -->
@@ -98,43 +85,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 text-center">
-                    <h2>Our Work</h2>
+                    <h2>Cities</h2>
                     <hr>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 col-md-offset-2 text-center">
                     <div class="portfolio-item">
-                        <a href="#">
-                            <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
-                        </a>
-                        <h4>Cityscape</h4>
+                        <%= image_tag("tegucigalpa.jpg", class: "img-portfolio img-responsive") %>
+                        <h4>Tegucigalpa, Honduras</h4>
                     </div>
                 </div>
                 <div class="col-md-4 text-center">
                     <div class="portfolio-item">
-                        <a href="#">
-                            <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
-                        </a>
-                        <h4>Is That On Fire?</h4>
+                        <%= image_tag("san-pedro-sula.jpg", class: "img-portfolio img-responsive") %>
+                        <h4>San Pedro Sula, Honduras</h4>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 col-md-offset-2 text-center">
                     <div class="portfolio-item">
-                        <a href="#">
-                            <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
-                        </a>
-                        <h4>Stop Sign</h4>
+                        <%= image_tag("copan.jpg", class: "img-portfolio img-responsive") %>
+                        <h4>Santa Rosa de Copán, Honduras</h4>
                     </div>
                 </div>
                 <div class="col-md-4 text-center">
                     <div class="portfolio-item">
-                        <a href="#">
-                            <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
-                        </a>
-                        <h4>Narrow Focus</h4>
+                        <%= image_tag("antigua-guatemala.jpg", class: "img-portfolio img-responsive") %>
+                        <h4>Antigua, Guatemala</h4>
                     </div>
                 </div>
             </div>
@@ -147,9 +126,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
-                    <h3>The buttons below are impossible to resist.</h3>
-                    <a href="#" class="btn btn-lg btn-default">Click Me!</a>
-                    <a href="#" class="btn btn-lg btn-primary">Look at Me!</a>
+                    <% if user_signed_in? %>
+                      <h3>Hi! <%= current_user.email %></h3>
+                      <%= link_to "Logout", destroy_user_session_path, class: "btn btn-lg btn-danger", method: :delete %>
+                    <% else %>
+                      <h3>Sign up! It's free!</h3>
+                      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-default" %>
+                      <%= link_to "Login", new_user_session_path, class: "btn btn-lg btn-primary" %>
+                    <% end %>
                 </div>
             </div>
         </div>
@@ -190,34 +174,3 @@
         </div>
     </footer>
     <!-- /Footer -->
-
-    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
-    <script>
-    $("#menu-close").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    </script>
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    </script>
-    <script>
-    $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-    });
-    </script>

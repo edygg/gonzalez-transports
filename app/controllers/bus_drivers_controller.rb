@@ -4,7 +4,7 @@ class BusDriversController < ApplicationController
   # GET /bus_drivers
   # GET /bus_drivers.json
   def index
-    @bus_drivers = BusDriver.all
+    @bus_drivers = @bus.bus_driver
   end
 
   # GET /bus_drivers/1
@@ -14,6 +14,7 @@ class BusDriversController < ApplicationController
 
   # GET /bus_drivers/new
   def new
+    @bus = Bus.find(params[:bus_id])
     @bus_driver = BusDriver.new
   end
 
@@ -25,10 +26,11 @@ class BusDriversController < ApplicationController
   # POST /bus_drivers.json
   def create
     @bus_driver = BusDriver.new(bus_driver_params)
+    @bus_driver.bus_id = params[:bus_id]
 
     respond_to do |format|
       if @bus_driver.save
-        format.html { redirect_to @bus_driver, notice: 'Bus driver was successfully created.' }
+        format.html { redirect_to buses_path }
         format.json { render action: 'show', status: :created, location: @bus_driver }
       else
         format.html { render action: 'new' }
@@ -64,11 +66,12 @@ class BusDriversController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bus_driver
-      @bus_driver = BusDriver.find(params[:id])
+      @bus = Bus.find(params[:bus_id])
+      @bus_driver = @bus.bus_driver
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bus_driver_params
-      params.require(:bus_driver).permit(:name, :birth_date, :salary, :gender, :phone, :email)
+       params.require(:bus_driver).permit(:name, :birth_date, :salary, :gender, :phone, :email)
     end
 end

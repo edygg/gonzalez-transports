@@ -1,7 +1,7 @@
-<%= form_for(@bus) do |f| %>
+<%= form_for(@bus, class: "form-horizontal") do |f| %>
   <% if @bus.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bus.errors.count, "error") %> prohibited this bus from being saved:</h2>
+    <div class="alert alert-danger">
+      <strong><%= pluralize(@bus.errors.count, "error") %> prohibited this bus from being saved:</strong>
 
       <ul>
       <% @bus.errors.full_messages.each do |msg| %>
@@ -11,19 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :trademark %><br>
-    <%= f.text_field :trademark %>
+  <div class="form-group row">
+    <%= f.label :trademark, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_field :trademark, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :model %><br>
-    <%= f.text_field :model %>
+  <div class="form-group row">
+    <%= f.label :model, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_field :model, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :capacity %><br>
-    <%= f.number_field :capacity %>
+  <div class="form-group row">
+    <%= f.label :capacity, class: "col-sm-3 control-label" %>
+    <div class="col-sm-9">
+      <%= f.number_field :capacity, class: "form-control" %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

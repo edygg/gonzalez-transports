@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fuid">
+  <div class="col-md-8 col-md-offset-2">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Trademark:</strong>
-  <%= @bus.trademark %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @bus.model %>
-</p>
-
-<p>
-  <strong>Capacity:</strong>
-  <%= @bus.capacity %>
-</p>
-
-<%= link_to 'Edit', edit_bus_path(@bus) %> |
-<%= link_to 'Back', buses_path %>
+    <p>
+      <strong>Trademark:</strong>
+      <%= @bus.trademark %>
+    </p>
+    
+    <p>
+      <strong>Model:</strong>
+      <%= @bus.model %>
+    </p>
+    
+    <p>
+      <strong>Capacity:</strong>
+      <%= @bus.capacity %>
+    </p>
+    
+    <%= link_to 'Edit', edit_bus_path(@bus), class: "btn btn-info" %>
+    <%= link_to 'Back', buses_path, class: "btn btn-default" %>
+  </div>
+</div>

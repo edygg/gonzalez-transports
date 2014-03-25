@@ -1,6 +1,10 @@
-<h1>Editing bus</h1>
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2">
+   <h1>Editing bus</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @bus %> |
-<%= link_to 'Back', buses_path %>
+    <%= render 'form' %>
+    <br>
+    <%= link_to 'Show', @bus, class: "btn btn-info"%>
+    <%= link_to 'Back', buses_path, class: "btn btn-default" %>
+  </div>
+</div>
