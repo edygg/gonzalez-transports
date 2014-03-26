@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+	<div class="col-md-8 col-md-offset-2">
+		<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @city.name %>
-</p>
+		<p>
+		  <strong>Name:</strong>
+		  <%= @city.name %>
+		</p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @city.country %>
-</p>
+		<p>
+		  <strong>Country:</strong>
+		  <%= @city.country %>
+		</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @city.description %>
-</p>
+		<p>
+		  <strong>Description:</strong>
+		  <%= @city.description %>
+		</p>
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
-<%= link_to 'Back', cities_path %>
+		<%= link_to 'Edit', edit_city_path(@city), class: "btn btn-primary" %>
+		<%= link_to 'Back', cities_path, class: "btn btn-default" %>
+	</div>
+</div>

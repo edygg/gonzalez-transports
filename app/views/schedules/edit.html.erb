@@ -1,6 +1,10 @@
-<h1>Editing schedule</h1>
+<div class="container-fluid">
+	<div class="col-md-8 col-md-offset-2">
+		<h1>Editing schedule</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @schedule %> |
-<%= link_to 'Back', schedules_path %>
+		<%= render 'form' %>
+		<br>
+		<%= link_to 'Show', @schedule, class: "btn btn-info" %> |
+		<%= link_to 'Back', schedules_path, class: "btn btn-default" %>
+	</div>
+</div>

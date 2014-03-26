@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Assign buses</h1>
+    <%= form_tag(assign_bus_path, class: "form-horizontal") do |f| %>
+      <% buses_array = Bus.all.map { |bus| ["#{bus.trademark} #{bus.model}", bus.id] } %>
+      <% schedules_array = Schedule.all.map { |schedule| ["#{schedule.departure_city.name} to #{schedule.arrival_city.name} at #{schedule.departure_time}", schedule.id] } %>
+      <div class="form-group">
+        <%= label_tag :bus_id, "Buses", class: "control-label" %>
+        <%= select_tag :bus_id, options_for_select(buses_array), class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :schedule_id, "Schedules", class: "control-label" %>
+        <%= select_tag :schedule_id, options_for_select(schedules_array), class: "form-control" %>
+      </div>
+      <%= submit_tag "Assign", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

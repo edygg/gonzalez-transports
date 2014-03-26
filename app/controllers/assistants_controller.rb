@@ -1,10 +1,12 @@
 class AssistantsController < ApplicationController
   before_action :set_assistant, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin_logged
 
   # GET /assistants
   # GET /assistants.json
   def index
-    @assistants = Assistant.all
+    @bus = Bus.find(params[:bus_id])
+    @assistants = @bus.assistant unless @bus.nil?
   end
 
   # GET /assistants/1
@@ -14,6 +16,7 @@ class AssistantsController < ApplicationController
 
   # GET /assistants/new
   def new
+    @bus = Bus.find(params[:bus_id])
     @assistant = Assistant.new
   end
 
@@ -25,10 +28,11 @@ class AssistantsController < ApplicationController
   # POST /assistants.json
   def create
     @assistant = Assistant.new(assistant_params)
+    @assistant.bus_id = params[:bus_id]
 
     respond_to do |format|
       if @assistant.save
-        format.html { redirect_to @assistant, notice: 'Assistant was successfully created.' }
+        format.html { redirect_to buses_path }
         format.json { render action: 'show', status: :created, location: @assistant }
       else
         format.html { render action: 'new' }
@@ -64,7 +68,12 @@ class AssistantsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assistant
+      @bus = Bus.find(params[:bus_id])
       @assistant = Assistant.find(params[:id])
+    end
+  
+    def check_admin_logged
+      redirect_to new_user_session_path unless user_signed_in? and current_user.try(:admin) 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

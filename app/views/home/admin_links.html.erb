@@ -1,0 +1,16 @@
+<div>
+  <div class="container-fluid">
+    <div class="col-md-8">
+      <%= link_to (root_path) do %>
+        <%= image_tag("logo.png", class: "img-responsive", id: "logo-image") %>
+      <% end %>
+    </div>
+    
+    <div class="col-md-4">
+      <%= link_to "Manage buses, drivers, and assistants", buses_path, class: "btn btn-primary" %>
+      <%= link_to "Manage cities", cities_path, class: "btn btn-primary" %>
+      <%= link_to "Manage schedules", schedules_path, class: "btn btn-primary" %>
+      <%= link_to "Assign schedules", assign_schedules_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+	<div class="col-md-8 col-md-offset-2">
+		<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Departure time:</strong>
-  <%= @schedule.departure_time %>
-</p>
+		<p>
+		  <strong>Departure time:</strong>
+		  <%= @schedule.departure_time %>
+		</p>
 
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-<%= link_to 'Back', schedules_path %>
+		<%= link_to 'Edit', edit_schedule_path(@schedule), class: "btn btn-info" %>
+		<%= link_to 'Back', schedules_path, class: "btn btn-default" %>
+	</div>
+</div>

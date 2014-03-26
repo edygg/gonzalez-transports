@@ -1,5 +1,7 @@
 GonzalezTransports::Application.routes.draw do
+  # Home routes
   get "home/index"
+  get "home/admin_links"
 
   devise_for :users
 
@@ -12,6 +14,8 @@ GonzalezTransports::Application.routes.draw do
   resources :cities
 
   resources :schedules
+  get "/list_buses", to: "schedules#list_buses", as: "assign_schedules"
+  post "/assign_bus", to: "schedules#assign_bus", as: "assign_bus"
 
   resources :buses do
     resources :assistants

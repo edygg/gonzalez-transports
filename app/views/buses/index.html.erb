@@ -12,6 +12,7 @@
           <th></th>
           <th></th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
     
@@ -25,9 +26,15 @@
             <td><%= link_to 'Edit', edit_bus_path(bus), class: "btn btn-sm btn-primary" %></td>
             <td><%= link_to 'Destroy', bus, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
             <% if bus.bus_driver.nil? %>
-              <td><%= link_to 'Add bus driver', new_bus_bus_driver_path(bus) %></td>
+              <td><%= link_to 'Add bus driver', new_bus_bus_driver_path(bus), class: "btn btn-sm btn-success" %></td>
             <% else %>
-            <td><%= link_to 'Edit bus driver', edit_bus_bus_driver_path(bus.bus_driver) %></td>
+              <td><%= link_to 'Edit bus driver', edit_bus_bus_driver_path(bus, bus.bus_driver), class: "btn btn-sm btn-info" %></td>
+            <% end %>
+            
+            <% if bus.assistant.nil? %>
+              <td><%= link_to 'Add bus assistant', new_bus_assistant_path(bus), class: "btn btn-sm btn-success" %></td>
+            <% else %>
+              <td><%= link_to 'Edit bus assistant', edit_bus_assistant_path(bus, bus.assistant), class: "btn btn-sm btn-info" %></td>
             <% end %>
           </tr>
         <% end %>

@@ -1,6 +1,10 @@
-<h1>Editing city</h1>
+<div class="container-fluid">
+	<div class="col-md-8 col-md-offset-2">
+		<h1>Editing city</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @city %> |
-<%= link_to 'Back', cities_path %>
+		<%= render 'form' %>
+		<br>
+		<%= link_to 'Show', @city, class: "btn btn-info" %>
+		<%= link_to 'Back', cities_path, class: "btn btn-default" %>
+	</div>
+</div>

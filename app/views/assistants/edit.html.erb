@@ -1,6 +1,10 @@
-<h1>Editing assistant</h1>
+<div class="content-fluid">
+	<div class="col-md-8 col-md-offset-2">
+		<h1>Editing assistant</h1>
 
-<%= render 'form' %>
+		<%= render 'form' %>
 
-<%= link_to 'Show', @assistant %> |
-<%= link_to 'Back', assistants_path %>
+		<%= link_to 'Show', bus_path(@bus, @assistant) %> |
+		<%= link_to 'Back', root_path %>
+	</div>
+</div>

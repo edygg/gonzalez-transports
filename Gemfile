@@ -42,7 +42,7 @@ gem 'font-awesome-sass'
 gem 'devise'
 
 # attr_accessible
-gem 'protected_attributes'
+# gem 'protected_attributes'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

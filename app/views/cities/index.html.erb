@@ -1,31 +1,36 @@
-<h1>Listing cities</h1>
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Listing cities</h1>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @cities.each do |city| %>
+            <tr>
+              <td><%= city.name %></td>
+              <td><%= city.country %></td>
+              <td><%= city.description %></td>
+              <td><%= link_to 'Show', city, class: "btn btn-sm btn-info" %></td>
+              <td><%= link_to 'Edit', edit_city_path(city), class: "btn btn-sm btn-primary" %></td>
+              <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <br>
 
-  <tbody>
-    <% @cities.each do |city| %>
-      <tr>
-        <td><%= city.name %></td>
-        <td><%= city.country %></td>
-        <td><%= city.description %></td>
-        <td><%= link_to 'Show', city %></td>
-        <td><%= link_to 'Edit', edit_city_path(city) %></td>
-        <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New City', new_city_path %>
+    <%= link_to 'New City', new_city_path, class: "btn btn-success" %>
+    <%= link_to "Back", {controller: "home", action: "admin_links"}, {class: "btn btn-default"} %>
+  </div>
+</div>

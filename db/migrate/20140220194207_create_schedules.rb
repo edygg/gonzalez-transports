@@ -5,7 +5,7 @@ class CreateSchedules < ActiveRecord::Migration
       t.belongs_to :arrival_city, class_name: "City", foreign_key: "arrival_city"
       
       t.time :departure_time
-      t.string :days
+      #t.string :days
 
       t.timestamps
     end

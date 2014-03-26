@@ -1,27 +1,30 @@
-<h1>Listing package_types</h1>
+<div class="table-responsive">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Listing package types</h1>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @package_types.each do |package_type| %>
+          <tr>
+            <td><%= package_type.name %></td>
+            <td><%= link_to 'Show', package_type, class: "btn btn-sm btn-primary" %></td>
+            <td><%= link_to 'Edit', edit_package_type_path(package_type), class: "btn btn-sm btn-info" %></td>
+            <td><%= link_to 'Destroy', package_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <tbody>
-    <% @package_types.each do |package_type| %>
-      <tr>
-        <td><%= package_type.name %></td>
-        <td><%= link_to 'Show', package_type %></td>
-        <td><%= link_to 'Edit', edit_package_type_path(package_type) %></td>
-        <td><%= link_to 'Destroy', package_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <br>
 
-<br>
-
-<%= link_to 'New Package type', new_package_type_path %>
+    <%= link_to 'New Package type', new_package_type_path, class: "btn btn-success" %>
+  </div>
+</div>

@@ -1,6 +1,10 @@
-<h1>Editing bus_driver</h1>
+<div class="container-fluid">
+	<div class="col-md-8 col-md-offset-2">
+		<h1>Editing bus driver</h1>
 
-<%= render 'form' %>
+		<%= render 'form' %>
 
-<%= link_to 'Show', @bus_driver %> |
-<%= link_to 'Back', bus_drivers_path %>
+		<%= link_to 'Show', bus_path(@bus, @bus_driver) %> |
+		<%= link_to 'Back', root_path %>
+	</div>
+</div>

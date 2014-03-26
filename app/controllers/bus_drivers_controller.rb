@@ -1,10 +1,12 @@
 class BusDriversController < ApplicationController
   before_action :set_bus_driver, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_admin_logged
+  
   # GET /bus_drivers
   # GET /bus_drivers.json
   def index
-    @bus_drivers = @bus.bus_driver
+    @bus = Bus.find(params[:bus_id])
+    @bus_drivers = @bus.bus_driver unless @bus.nil?
   end
 
   # GET /bus_drivers/1
@@ -68,6 +70,10 @@ class BusDriversController < ApplicationController
     def set_bus_driver
       @bus = Bus.find(params[:bus_id])
       @bus_driver = @bus.bus_driver
+    end
+  
+    def check_admin_logged
+      redirect_to new_user_session_path unless user_signed_in? and current_user.try(:admin) 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
