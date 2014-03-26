@@ -1,5 +1,6 @@
 class TravelPackagesController < ApplicationController
   before_action :set_travel_package, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin_logged, except: [:show_ticket_prices]
 
   # GET /travel_packages
   # GET /travel_packages.json
@@ -60,15 +61,23 @@ class TravelPackagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def show_ticket_prices
+    @travel_packages = TravelPackage.all
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_travel_package
       @travel_package = TravelPackage.find(params[:id])
     end
+  
+    def check_admin_logged
+      redirect_to new_user_session_path unless user_signed_in? and current_user.try(:admin) 
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_package_params
-      params.require(:travel_package).permit(:price)
+      params.require(:travel_package).permit(:price, :schedule_id, :package_type_id)
     end
 end

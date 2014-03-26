@@ -10,6 +10,7 @@ GonzalezTransports::Application.routes.draw do
   resources :tickets
 
   resources :travel_packages
+  get "/show_ticket_prices", to: "travel_packages#show_ticket_prices", as: "show_ticket_prices"
 
   resources :cities
 

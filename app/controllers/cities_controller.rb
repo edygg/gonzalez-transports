@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin_logged
 
   # GET /cities
   # GET /cities.json
@@ -66,7 +67,11 @@ class CitiesController < ApplicationController
     def set_city
       @city = City.find(params[:id])
     end
-
+    
+    def check_admin_logged
+      redirect_to new_user_session_path unless user_signed_in? and current_user.try(:admin) 
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
       params.require(:city).permit(:name, :country, :description)

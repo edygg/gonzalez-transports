@@ -1,5 +1,6 @@
 class PackageTypesController < ApplicationController
   before_action :set_package_type, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin_logged
 
   # GET /package_types
   # GET /package_types.json
@@ -65,6 +66,10 @@ class PackageTypesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_package_type
       @package_type = PackageType.find(params[:id])
+    end
+  
+    def check_admin_logged
+      redirect_to new_user_session_path unless user_signed_in? and current_user.try(:admin) 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

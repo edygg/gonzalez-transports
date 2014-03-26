@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Ticket Prices</h1>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Schedule</th>
+          <th>Package Type</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @travel_packages.each do |travel_package| %>
+          <tr>
+            <td><%= "#{travel_package.schedule.departure_city.name} to #{travel_package.schedule.arrival_city.name} at #{travel_package.schedule.departure_time.hour}:#{travel_package.schedule.departure_time.min}"  %></td>
+            <td><%= travel_package.package_type.name %></td>
+            <td><%= travel_package.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <br>
+    
+    <%= link_to 'Back', root_path, class: "btn btn-default" %>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<%= form_for(@travel_package) do |f| %>
+<%= form_for(@travel_package, class: "form-horizontal") do |f| %>
   <% if @travel_package.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@travel_package.errors.count, "error") %> prohibited this travel_package from being saved:</h2>
@@ -10,12 +10,24 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="form-group">
+    <%= f.label :schedule_id, class: "control-label" %><br>
+    <% schedules_array = Schedule.all.map { |schedule| ["#{schedule.departure_city.name} to #{schedule.arrival_city.name} at #{schedule.departure_time}", schedule.id] } %>
+    <%= f.select :schedule_id, options_for_select(schedules_array), class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :package_type_id, class: "control-label" %><br>
+    <% package_types_array = PackageType.all.map { |package_type| ["#{package_type.name}", package_type.id] } %>
+    <%= f.select :package_type_id, options_for_select(package_types_array), class: "form-control" %>
+  </div>
 
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+  <div class="form-group">
+    <%= f.label :price, class: "control-label" %><br>
+    <%= f.text_field :price, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>

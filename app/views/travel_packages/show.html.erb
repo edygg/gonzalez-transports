@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @travel_package.price %>
-</p>
-
-<%= link_to 'Edit', edit_travel_package_path(@travel_package) %> |
-<%= link_to 'Back', travel_packages_path %>
+    <p>
+      <strong>Price:</strong>
+      <%= @travel_package.price %>
+    </p>
+    
+    <%= link_to 'Edit', edit_travel_package_path(@travel_package), class: "btn btn-info" %> |
+    <%= link_to 'Back', travel_packages_path, class: "btn btn-default" %>
+  </div>
+</div>

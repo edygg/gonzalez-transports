@@ -11,6 +11,7 @@
     <% end %>
     <li><%= link_to "Buy tickets", new_ticket_path %>
     </li>
+    <li><%= link_to "Show ticket prices", show_ticket_prices_path %></li>
     <% unless current_user.nil? %>
     <% if current_user.admin %>
     <li><%= link_to "Manage Resources", controller: "home", action: "admin_links"  %></li>

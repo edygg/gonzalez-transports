@@ -1,27 +1,35 @@
-<h1>Listing travel_packages</h1>
+<div class="table-responsive">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Listing travel packages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Price</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @travel_packages.each do |travel_package| %>
-      <tr>
-        <td><%= travel_package.price %></td>
-        <td><%= link_to 'Show', travel_package %></td>
-        <td><%= link_to 'Edit', edit_travel_package_path(travel_package) %></td>
-        <td><%= link_to 'Destroy', travel_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Travel package', new_travel_package_path %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Schedule</th>
+          <th>Package Type</th>
+          <th>Price</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @travel_packages.each do |travel_package| %>
+          <tr>
+            <td><%= "#{travel_package.schedule.departure_city.name} to #{travel_package.schedule.arrival_city.name} at #{travel_package.schedule.departure_time}"  %></td>
+            <td><%= travel_package.package_type.name %></td>
+            <td><%= travel_package.price %></td>
+            <td><%= link_to 'Show', travel_package, class: "btn btn-sm btn-primary" %></td>
+            <td><%= link_to 'Edit', edit_travel_package_path(travel_package), class: "btn btn-sm btn-info" %></td>
+            <td><%= link_to 'Destroy', travel_package, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <br>
+    
+    <%= link_to 'New Travel package', new_travel_package_path, class: "btn btn-success" %>
+  </div>
+</div>
